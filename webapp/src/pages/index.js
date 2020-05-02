@@ -1,17 +1,25 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Button } from "rebass"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+import { Heading, Button } from 'rebass'
+import { useAuth } from 'react-use-auth'
+
+const IndexPage = () => {
+    const { isAuthenticated, user, login } = useAuth()
+
+  return (
   <Layout>
-    <SEO title="Home" />
-    <p>Write a landing page</p>
-    <Button bg="highlight" onClick={console.log}>Get started</Button>
+    <SEO title="Markdown Landing Page" />
+    <Heading fontSize={[5, 6, 7]}>Markdown Landing Page</Heading>
+    <p>write a landing page for anything</p>
+    {isAuthenticated() ? <p>hello {user.nickname}</p> : null}
+    <Button bg='highlight' onClick={login}>Get started</Button>
   </Layout>
-)
+  )
+}
 
 export default IndexPage
