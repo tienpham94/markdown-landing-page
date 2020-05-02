@@ -5,6 +5,7 @@ const schema = gql`
   type Hello {
     world: String
   }
+
   type Query {
     hello: Hello
   }
